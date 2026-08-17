@@ -1,0 +1,655 @@
+/**
+ * Dashboard theme — kept in lockstep with the extension's shared theme
+ * (socialcue-extension/src/styles/theme.css) so free (extension) and Pro
+ * (this dashboard) feel like one product: Social Cue orange accent, the same
+ * card-row opportunity list, and a light-mode toggle. Dark is the default;
+ * the top-right toggle sets data-theme="light" on <html>.
+ */
+:root {
+  color-scheme: dark; /* keep native selects/scrollbars dark */
+  --bg: #0f1115;
+  --panel: #171a21;
+  --panel-2: #1d212b;
+  --border: #2a2f3a;
+  --text: #e6e9ef;
+  --muted: #8b93a3;
+  --accent: #e05d1a;
+  --green: #3fb96f;
+  --amber: #d9a13c;
+  --red: #d9534f;
+  font-size: 15px;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f4f5f7;
+  --panel: #ffffff;
+  --panel-2: #eceef2;
+  --border: #d8dce3;
+  --text: #1d222b;
+  --muted: #5d6675;
+  --accent: #c94f10; /* darkened for contrast on light panels */
+  --green: #1f8a4d;
+  --amber: #9c6d12;
+  --red: #c0392b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.app { display: flex; height: 100vh; }
+.content { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+/* ---------- sidebar (mirrors the extension options nav) ---------- */
+
+.sidebar {
+  width: 200px; flex: none;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  padding: 18px 0;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.brand-title { font-size: 1rem; font-weight: 700; padding: 0 16px; color: var(--accent); }
+.nav { display: flex; flex-direction: column; }
+.nav button {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  width: 100%; text-align: left;
+  background: transparent; border: 0; border-radius: 0;
+  padding: 9px 16px 9px 13px;
+  color: var(--text); font-size: 0.9rem;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+}
+.nav button:hover { background: var(--panel-2); border-color: transparent; border-left-color: transparent; }
+.nav button[aria-current='page'] {
+  background: var(--panel-2); color: var(--accent);
+  border-left-color: var(--accent); font-weight: 600;
+}
+.nav-count {
+  font-size: 0.7rem; font-weight: 700; color: #fff;
+  background: var(--accent); border-radius: 999px;
+  padding: 0 7px; line-height: 1.6;
+}
+
+/* ---------- top bar ---------- */
+
+.topbar {
+  display: flex; align-items: center; gap: 16px;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+}
+.topbar h1 { font-size: 1.05rem; margin: 0; font-weight: 700; color: var(--accent); }
+.topbar .error { color: var(--amber); font-size: 0.85rem; }
+.topbar-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+
+.theme-toggle {
+  padding: 4px 9px;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 999px;
+}
+
+/* ---------- filter bar ---------- */
+
+.view-note {
+  margin: 0; padding: 10px 18px;
+  font-size: 0.8rem; color: var(--muted); line-height: 1.5;
+  border-bottom: 1px solid var(--border); background: var(--panel);
+}
+
+.filter-bar {
+  display: flex; gap: 18px; padding: 10px 18px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+}
+.filter-bar label {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.8rem; color: var(--muted);
+}
+.filter-bar select {
+  background: var(--panel-2); color: var(--text);
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 4px 8px; font-size: 0.85rem;
+}
+/* "Clear all" (bulk-skip the queue) sits apart from the filters, on the right. */
+.filter-bar .clear-all { margin-left: auto; }
+.filter-bar .clear-all:hover { border-color: var(--red); color: var(--red); }
+
+/* ---------- generic controls ---------- */
+
+button {
+  font: inherit;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel-2);
+  color: var(--text);
+  cursor: pointer;
+}
+button:hover { border-color: var(--accent); }
+
+.main { display: flex; flex: 1; min-height: 0; }
+.queue-wrap { flex: 1; overflow-y: auto; }
+
+/* ---------- opportunity list (card rows, mirrors the extension) ---------- */
+
+.opp-list { display: flex; flex-direction: column; }
+
+.opp-row {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+  text-align: left;
+  padding: 10px 16px 10px 13px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid var(--border);
+  border-left: 3px solid transparent;
+  cursor: pointer;
+}
+.opp-row:hover { background: var(--panel-2); border-color: var(--border); }
+.opp-row.selected { background: var(--panel-2); border-left-color: var(--accent); }
+
+.row-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.row-title {
+  font-weight: 600; font-size: 0.9rem;
+  display: flex; align-items: center; min-width: 0;
+}
+.row-title a {
+  color: var(--text); text-decoration: none;
+  /* Long titles truncate; the badge after them stays visible. */
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.row-title .badge-fresh { flex: none; }
+/* Posted rows stay in the queue as history: struck through + dimmed. */
+.opp-row.posted .row-title a {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+.opp-row.posted .row-title a:hover { color: var(--accent); }
+.row-title a:hover { color: var(--accent); text-decoration: underline; }
+.row-meta {
+  font-size: 0.72rem; color: var(--muted);
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+}
+
+/* Hover quick-triage on rows: ✓ mark posted / ✕ ignore, right-aligned.
+   Hidden until the row is hovered so the list stays quiet. */
+.row-actions { flex: none; display: none; gap: 6px; margin-left: auto; }
+.opp-row:hover .row-actions { display: flex; }
+.row-action {
+  display: flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px;
+  border: 1px solid var(--border); border-radius: 5px;
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 0.85rem; font-weight: 700; line-height: 1;
+  cursor: pointer;
+}
+.row-action.act-post:hover { color: var(--green); border-color: var(--green); }
+.row-action.act-skip:hover { color: var(--red); border-color: var(--red); }
+
+.score {
+  flex: none;
+  font-weight: 700; font-size: 0.78rem;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 5px;
+  padding: 1px 6px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.score.big { font-size: 1rem; padding: 5px 9px; }
+
+/* status pill on the row */
+.pill {
+  flex: none;
+  font-size: 0.62rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  border: 1px solid var(--muted); border-radius: 999px;
+  padding: 1px 8px; color: var(--muted);
+}
+.pill-new { color: var(--accent); border-color: var(--accent); }
+.pill-reviewed { color: var(--amber); border-color: var(--amber); }
+.pill-approved { color: var(--green); border-color: var(--green); }
+.pill-posted { color: var(--green); border-color: var(--green); }
+.pill-skipped { color: var(--muted); border-color: var(--muted); }
+.pill-failed { color: var(--red); border-color: var(--red); }
+
+/* Filled title badge, to the RIGHT of the title text: "NEW" for a timely
+   (source post < 4h old) opportunity, "POSTED" once the reply went out. */
+.badge-fresh {
+  display: inline-block; vertical-align: middle;
+  margin-left: 6px;
+  font-size: 0.58rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: #fff; background: var(--accent);
+  border-radius: 4px; padding: 1px 5px;
+}
+.badge-posted { background: var(--green); }
+
+/* source badge (kept from before, retinted to the family) */
+.badge {
+  font-size: 0.62rem; padding: 1px 7px; border-radius: 999px;
+  border: 1px solid var(--border); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600;
+}
+.badge-plugin { border-color: var(--accent); color: var(--accent); }
+.badge-extension { border-color: var(--green); color: var(--green); }
+.badge-pro { border-color: var(--amber); color: var(--amber); }
+.badge-edited { border-color: var(--green); color: var(--green); }
+/* The "edited" badge doubles as the revert control: hover flips its label. */
+button.badge-revert { cursor: pointer; background: none; }
+.badge-revert .badge-hover { display: none; }
+.badge-revert:hover { border-color: var(--red); color: var(--red); }
+.badge-revert:hover .badge-idle { display: none; }
+.badge-revert:hover .badge-hover { display: inline; }
+
+.empty { padding: 40px; text-align: center; color: var(--muted); }
+
+/* ---------- detail pane ---------- */
+
+.detail {
+  width: 430px; flex-shrink: 0; overflow-y: auto;
+  border-left: 1px solid var(--border);
+  background: var(--panel); padding: 18px;
+}
+.detail.empty { display: flex; align-items: center; justify-content: center; }
+.detail header { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+.detail h2 { font-size: 1rem; margin: 0 0 4px; line-height: 1.35; }
+.detail h2 a { color: var(--text); text-decoration: none; }
+.detail h2 a:hover { color: var(--accent); text-decoration: underline; }
+.detail .url-line {
+  display: block; margin: 0 0 6px;
+  font-size: 0.72rem; color: var(--muted);
+  word-break: break-all; text-decoration: none;
+}
+.detail .url-line:hover { color: var(--accent); text-decoration: underline; }
+.detail .meta {
+  font-size: 0.78rem; color: var(--muted);
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+}
+.detail .ctx-toggle {
+  flex: none; width: 16px; height: 16px; padding: 0; line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); border-radius: 3px;
+  background: transparent; color: var(--muted);
+  font-size: 0.8rem; font-family: inherit; cursor: pointer;
+}
+.detail .ctx-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.detail .ctx-body { margin-top: 6px; line-height: 1.5; white-space: pre-wrap; }
+.detail section { margin-top: 16px; }
+.detail h3 {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--muted); font-weight: 700; margin: 0 0 6px;
+  display: flex; align-items: center; gap: 10px;
+}
+.detail p, .detail blockquote { margin: 0; font-size: 0.88rem; line-height: 1.5; }
+.detail p { white-space: pre-wrap; }
+.detail blockquote {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-left: 3px solid var(--accent);
+  padding: 10px 12px; border-radius: 0 6px 6px 0; white-space: pre-wrap;
+}
+.detail .path { font-family: ui-monospace, monospace; font-size: 0.78rem; color: var(--muted); word-break: break-all; }
+
+/* ---------- draft editing + notes (voice feedback loop) ---------- */
+
+.detail .draft-editor textarea, .detail .note-input {
+  width: 100%; box-sizing: border-box; resize: vertical;
+  background: var(--panel-2); color: var(--text);
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 8px 10px; font: inherit; font-size: 0.88rem; line-height: 1.5;
+}
+.detail .draft-editor textarea:focus, .detail .note-input:focus {
+  outline: none; border-color: var(--accent);
+}
+.detail .draft-actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.detail .copy:disabled { opacity: 0.6; cursor: default; }
+.detail blockquote.original {
+  margin-top: 8px; opacity: 0.65;
+  border-left-color: var(--border);
+  background: color-mix(in srgb, var(--muted) 8%, transparent);
+}
+/* Read-only reply text on a posted row's detail pane. */
+.detail blockquote.posted-reply {
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid var(--border); border-radius: 6px;
+  background: var(--panel-2);
+  font-size: 0.88rem; line-height: 1.5;
+  white-space: pre-wrap;
+}
+.detail .review-msg { margin-top: 8px; font-size: 0.78rem; color: var(--green); }
+.detail .screenshot {
+  display: block; max-width: 100%; height: auto;
+  border: 1px solid var(--border); border-radius: 6px;
+}
+
+.status-buttons { display: flex; gap: 8px; margin-top: 4px; flex-wrap: wrap; }
+.status-buttons button, .copy, .token-gate button {
+  background: var(--panel-2); color: var(--text);
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 5px 12px; font-size: 0.82rem; cursor: pointer;
+}
+.status-buttons button:hover, .copy:hover { border-color: var(--accent); }
+.status-buttons button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.copy { padding: 2px 9px; font-size: 0.72rem; }
+
+/* ---------- token gate ---------- */
+
+.token-gate {
+  max-width: 460px; margin: 18vh auto 0; padding: 0 20px; text-align: center;
+}
+.token-gate h1 { color: var(--accent); }
+.token-gate p { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+.token-gate form { display: flex; gap: 8px; margin-top: 14px; }
+.token-gate input {
+  flex: 1; background: var(--panel-2); color: var(--text);
+  border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px;
+}
+.token-gate button { border-color: var(--accent); color: var(--accent); }
+
+/* ---------- upgrade / license modal ---------- */
+
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(10, 12, 16, 0.6);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-card {
+  background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+  max-width: 440px; width: calc(100% - 40px); padding: 20px 26px 22px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  max-height: 85vh; overflow-y: auto;
+}
+.modal-header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.modal-header h2 { margin: 0 0 6px; font-size: 1.25rem; }
+.upgrade-sub { color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px; }
+.upgrade-benefits {
+  list-style: none; padding: 0; margin: 0 0 16px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.upgrade-benefits li {
+  font-size: 0.88rem; line-height: 1.45; padding-left: 22px; position: relative;
+}
+.upgrade-benefits li::before {
+  content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700;
+}
+.upgrade-cta {
+  display: block; text-align: center; background: var(--accent); color: #fff;
+  border-radius: 8px; padding: 11px 16px; font-weight: 700; font-size: 0.95rem;
+  text-decoration: none;
+}
+.upgrade-cta:hover { filter: brightness(1.1); }
+.upgrade-price { text-align: center; color: var(--muted); font-size: 0.8rem; margin: 8px 0 0; }
+.upgrade-divider { border-top: 1px solid var(--border); margin: 18px 0 14px; }
+.upgrade-have { font-size: 0.85rem; margin: 0 0 8px; }
+.license-form { display: flex; gap: 8px; }
+.license-form input {
+  flex: 1; background: var(--bg); color: var(--text);
+  border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px;
+}
+.license-form button[type='submit'] {
+  background: var(--panel); color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 6px;
+  padding: 5px 12px; font-size: 0.82rem; cursor: pointer;
+}
+.upgrade-hint { color: var(--muted); font-size: 0.78rem; line-height: 1.5; margin: 8px 0 0; }
+.modal-card .error { color: var(--red); font-size: 0.82rem; margin: 8px 0 0; }
+
+/* ---------- assisted posting ---------- */
+
+.post-row { display: flex; align-items: center; gap: 10px; margin: 2px 0 10px; }
+.post-btn {
+  background: var(--accent); color: #fff;
+  border: 1px solid var(--accent); border-radius: 6px;
+  padding: 6px 14px; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+}
+.post-btn:hover:not(:disabled) { filter: brightness(1.1); }
+.post-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.pro-hint { font-size: 0.75rem; color: var(--muted); }
+.pro-hint a { color: var(--accent); }
+.post-msg { font-size: 0.8rem; margin: 0 0 8px; }
+.post-msg.ok { color: var(--green); }
+.post-msg.err { color: var(--amber); }
+
+a { color: var(--accent); }
+code {
+  font-size: 0.92em;
+  background: var(--panel-2);
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+/* ---------- performance metrics on the Submitted view (Pro) ---------- */
+
+.perf-row { align-items: center; }
+.perf-metric {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  min-width: 70px;
+}
+.perf-value { font-size: 1.05rem; font-weight: 700; color: var(--text); }
+.perf-delta { font-size: 0.72rem; color: var(--muted); }
+.perf-delta.up { color: var(--green); }
+.perf-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.perf-stats { display: flex; gap: 20px; margin: 4px 0 8px; }
+
+/* ---------- settings ---------- */
+.settings { max-width: 880px; padding: 10px 4px 48px; }
+.settings .muted { color: var(--muted); font-weight: 400; }
+.settings-block {
+  margin-top: 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px 20px;
+}
+.settings-block > h3,
+.settings-block-head h3 {
+  font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--muted); margin: 0 0 10px;
+}
+/* Inside settings cards, notes are plain paragraphs, not the full-width bar. */
+.settings .view-note {
+  background: transparent; border-bottom: 0;
+  padding: 0; margin: 0 0 14px; max-width: 640px;
+}
+.settings-block-head {
+  display: flex; align-items: center; gap: 10px; min-height: 30px;
+  margin-bottom: 6px;
+}
+.settings-block-head h3 { margin: 0; }
+.settings-block-head .run-actions {
+  margin-left: auto; display: flex; align-items: center; gap: 8px;
+}
+.settings-block-head .post-msg { margin: 0; }
+
+.run-field { margin-top: 18px; }
+.run-field > label {
+  display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 8px;
+}
+.run-field .hint { font-weight: 400; color: var(--muted); margin-left: 6px; }
+.chip-row { display: flex; flex-wrap: wrap; gap: 7px; }
+.chip {
+  padding: 4px 13px; border-radius: 999px; font-size: 0.8rem;
+  background: var(--panel-2); color: var(--muted);
+  border: 1px solid var(--border); cursor: pointer;
+}
+.chip:hover { border-color: var(--muted); }
+.chip.on {
+  border-color: var(--accent); color: var(--accent); font-weight: 600;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.slider-row {
+  display: grid; grid-template-columns: 76px 1fr 150px;
+  align-items: center; gap: 12px;
+  max-width: 560px; margin-top: 6px;
+}
+.slider-row.no-label { grid-template-columns: 1fr 200px; max-width: 496px; }
+.slider-label { font-size: 0.8rem; color: var(--muted); text-transform: capitalize; }
+.slider-value { font-size: 0.8rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.slider-row input[type='range'] { width: 100%; margin: 0; accent-color: var(--accent); }
+
+.kv {
+  display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px;
+  margin: 0; font-size: 0.88rem;
+}
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; color: var(--text); }
+.brand-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px;
+}
+.brand-card {
+  background: var(--panel); border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 14px;
+}
+.brand-card.inactive { opacity: 0.6; }
+.brand-card-head { display: flex; align-items: center; gap: 8px; }
+.brand-card-head .dot {
+  width: 8px; height: 8px; border-radius: 999px; flex: none;
+  background: var(--muted);
+}
+.brand-card-head .dot.on { background: var(--green); }
+.brand-card-name { font-weight: 700; font-size: 0.95rem; }
+.brand-card-flag {
+  margin-left: auto; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.brand-card-tagline { margin: 8px 0 0; font-size: 0.85rem; line-height: 1.4; }
+.brand-edit-btn { margin-left: auto; width: auto; height: auto; padding: 2px 8px; }
+.brand-card-head .switch { margin-left: 8px; }
+
+/* on/off switch (brand active toggle) */
+.switch {
+  width: 34px; height: 19px; padding: 2px; flex: none;
+  display: inline-flex; align-items: center;
+  border-radius: 999px; border: 1px solid var(--border);
+  background: var(--panel-2); cursor: pointer;
+}
+.switch .knob {
+  width: 13px; height: 13px; border-radius: 999px;
+  background: var(--muted);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.switch.on {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.switch.on .knob { transform: translateX(15px); background: var(--accent); }
+.switch:disabled { opacity: 0.5; cursor: default; }
+
+/* in-place brand editor */
+.brand-edit { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.brand-edit label {
+  display: block; margin-bottom: 4px;
+  font-size: 0.7rem; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+.brand-edit label .muted { text-transform: none; font-weight: 400; letter-spacing: 0; }
+.brand-edit input[type='text'],
+.brand-edit textarea {
+  width: 100%; background: var(--panel-2); color: inherit;
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 6px 9px; font-family: inherit; font-size: 0.85rem; line-height: 1.45;
+}
+.brand-edit textarea { resize: vertical; }
+.brand-edit-actions { display: flex; justify-content: flex-end; gap: 8px; }
+.brand-card-url {
+  display: inline-block; margin-top: 6px; font-size: 0.76rem; word-break: break-all;
+}
+.tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.tag {
+  font-size: 0.72rem; padding: 2px 7px; border-radius: 999px;
+  background: var(--panel-2); color: var(--muted); border: 1px solid var(--border);
+}
+.detail-toggle { margin-top: 10px; width: auto; height: auto; padding: 2px 7px; gap: 4px; }
+.brand-card-about {
+  margin: 8px 0 0; font-size: 0.8rem; line-height: 1.5; color: var(--muted);
+  white-space: pre-wrap;
+}
+
+/* ---------- Content Strategy (original posts via Postiz) ---------- */
+
+.content-toolbar {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.content-toolbar select {
+  background: var(--panel); color: inherit; border: 1px solid var(--border);
+  border-radius: 6px; padding: 4px 8px; font-size: 0.8rem;
+}
+.content-row .copy { flex: none; }
+.badge-content-idea { border-color: var(--muted); color: var(--muted); }
+.badge-content-draft { border-color: var(--amber); color: var(--amber); }
+.badge-content-scheduled { border-color: var(--accent); color: var(--accent); }
+.badge-content-published { border-color: var(--green); color: var(--green); }
+.badge-content-failed { border-color: var(--red); color: var(--red); }
+
+.content-editor select,
+.content-editor input[type="text"],
+.content-editor input[type="datetime-local"] {
+  width: 100%; background: var(--panel); color: inherit;
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 6px 9px; font-size: 0.85rem;
+}
+.content-editor textarea {
+  width: 100%; background: var(--panel); color: inherit;
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 8px 10px; font-size: 0.85rem; line-height: 1.5; resize: vertical;
+}
+.channel-list { display: flex; flex-direction: column; gap: 7px; }
+.channel-option {
+  display: flex; align-items: center; gap: 8px; font-size: 0.85rem; flex-wrap: wrap;
+}
+.channel-option .subreddit-input { width: 180px; flex: none; }
+
+.postiz-connect { display: flex; gap: 8px; flex-wrap: wrap; max-width: 640px; }
+.postiz-connect input { flex: 1 1 220px; min-width: 180px;
+  background: var(--panel); color: inherit; border: 1px solid var(--border);
+  border-radius: 6px; padding: 6px 9px; font-size: 0.85rem;
+}
+.postiz-connect button { flex: none; }
+.advanced-toggle {
+  background: none; border: none; padding: 2px 0; font-size: 0.78rem;
+  color: var(--muted); cursor: pointer; align-self: center;
+}
+.advanced-toggle:hover { color: var(--accent); }
+.postiz-advanced { flex-basis: 100%; }
+.postiz-advanced .view-note { margin: 4px 0 6px; }
+.postiz-advanced input { width: 100%; max-width: 420px; }
+.badge-source { border-color: var(--accent); color: var(--accent); margin-left: 5px; }
+.media-list { margin: 0 0 8px; padding-left: 18px; font-size: 0.85rem; }
+.media-list li { margin: 2px 0; }
+.media-remove { margin-left: 8px; padding: 1px 8px; font-size: 0.72rem; }
+.schedule-clear { padding: 0 7px; font-size: 0.8rem; line-height: 1.4; }
+.content-editor input[type='file'] { font-size: 0.8rem; margin-bottom: 6px; }
+.postiz-note { font-size: 0.78rem; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 14px; }
+.channel-brand-table { display: flex; flex-direction: column; gap: 10px; max-width: 640px; }
+.channel-brand-row {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 0.85rem;
+}
+.channel-brand-row .chip-row { margin-left: auto; align-items: center; }
+.channel-brand-row .chip-hint { font-size: 0.78rem; }
+.channel-brand-name { min-width: 180px; }
+.channel-brand-head { margin: 14px 0 4px; font-size: 0.85rem; }
+.channel-option.other-brand { opacity: 0.75; }
+
+/* ---------- "Your content" header (top of Content Strategy) ---------- */
+
+.content-head {
+  display: flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+  padding: 12px 18px;
+}
+.content-head h2 { margin: 0; font-size: 0.95rem; font-weight: 700; }
+.content-head .muted { font-size: 0.78rem; color: var(--muted); }
