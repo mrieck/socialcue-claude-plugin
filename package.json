@@ -1,0 +1,24 @@
+{
+  "name": "socialcue-plugin",
+  "version": "0.4.0",
+  "private": true,
+  "type": "module",
+  "description": "Social Cue — Claude Code plugin (active discovery sensor). Drives a local dedicated Chrome profile to find social-media conversations worth joining for your brands.",
+  "bin": {
+    "socialdiscovery": "lib/cli.js"
+  },
+  "scripts": {
+    "cli": "node lib/cli.js",
+    "bridge": "node lib/cli.js bridge start",
+    "dashboard:build": "npm --prefix dashboard run build",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "better-sqlite3": "^11.3.0",
+    "patchright": "^1.49.1",
+    "pngjs": "^7.0.0",
+    "tesseract-wasm": "^0.11.0",
+    "zod": "^3.25.0"
+  }
+}

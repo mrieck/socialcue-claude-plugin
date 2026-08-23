@@ -1,0 +1,337 @@
+[
+  {
+    "id": "producthunt",
+    "name": "Product Hunt",
+    "url": "https://www.producthunt.com",
+    "submitUrl": "https://www.producthunt.com/posts/new",
+    "signup": "mixed",
+    "oauthProviders": [
+      "google",
+      "twitter",
+      "facebook",
+      "apple"
+    ],
+    "testStatus": null,
+    "notes": "Big launch platform. Launch timing matters (00:01 PT). Supports scheduling a launch date."
+  },
+  {
+    "id": "betalist",
+    "name": "BetaList",
+    "url": "https://betalist.com",
+    "submitUrl": "https://betalist.com/submissions/new",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Pre-launch/beta startups. Free tier has a review queue; paid skip-the-line option."
+  },
+  {
+    "id": "alternativeto",
+    "name": "AlternativeTo",
+    "url": "https://alternativeto.net",
+    "submitUrl": "",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Positioned as alternatives to existing tools - pick the competitors to list against."
+  },
+  {
+    "id": "saashub",
+    "name": "SaaSHub",
+    "url": "https://www.saashub.com",
+    "submitUrl": "https://www.saashub.com/submit",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "SaaS catalog with alternatives pages."
+  },
+  {
+    "id": "uneed",
+    "name": "Uneed",
+    "url": "https://www.uneed.best",
+    "submitUrl": "",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Product Hunt-style launch calendar; free launches queue days/weeks out."
+  },
+  {
+    "id": "peerlist",
+    "name": "Peerlist Launchpad",
+    "url": "https://peerlist.io",
+    "submitUrl": "",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Weekly launch cycle tied to a personal Peerlist profile."
+  },
+  {
+    "id": "microlaunch",
+    "name": "MicroLaunch",
+    "url": "https://microlaunch.net",
+    "submitUrl": "",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Monthly leaderboard for indie products."
+  },
+  {
+    "id": "launchingnext",
+    "name": "Launching Next",
+    "url": "https://www.launchingnext.com",
+    "submitUrl": "https://www.launchingnext.com/submit/",
+    "signup": "none",
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Simple startup listing; form submission."
+  },
+  {
+    "id": "startupstash",
+    "name": "Startup Stash",
+    "url": "https://startupstash.com",
+    "submitUrl": "https://startupstash.com/add-listing/",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Resource directory organized by category; paid listing options exist."
+  },
+  {
+    "id": "devhunt",
+    "name": "DevHunt",
+    "url": "https://devhunt.org",
+    "submitUrl": "",
+    "signup": "oauth",
+    "oauthProviders": [
+      "github"
+    ],
+    "testStatus": null,
+    "notes": "Dev-tool launches; sign-in is GitHub OAuth only."
+  },
+  {
+    "id": "openalternative",
+    "name": "OpenAlternative",
+    "url": "https://openalternative.co",
+    "submitUrl": "https://openalternative.co/submit",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Open-source alternatives only - skip for closed-source brands."
+  },
+  {
+    "id": "indiehackers",
+    "name": "Indie Hackers Products",
+    "url": "https://www.indiehackers.com",
+    "submitUrl": "",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Product profile tied to a community account; the community side is covered by discovery."
+  },
+  {
+    "id": "theresanaiforthat",
+    "name": "There's An AI For That",
+    "url": "https://theresanaiforthat.com",
+    "submitUrl": "https://theresanaiforthat.com/submit/",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "AI tools only. Large traffic; paid review queue options."
+  },
+  {
+    "id": "toolify",
+    "name": "Toolify",
+    "url": "https://www.toolify.ai",
+    "submitUrl": "",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "AI tools directory."
+  },
+  {
+    "id": "futurepedia",
+    "name": "Futurepedia",
+    "url": "https://www.futurepedia.io",
+    "submitUrl": "",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "AI tools directory; submission via form."
+  },
+  {
+    "id": "fazier",
+    "name": "Fazier",
+    "url": "https://fazier.com",
+    "submitUrl": "",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Launch platform with daily/weekly badges."
+  },
+  {
+    "id": "tinylaunch",
+    "name": "TinyLaunch",
+    "url": "https://www.tinylaunch.com",
+    "submitUrl": "",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Lightweight launch listing for indie projects."
+  },
+  {
+    "id": "startupbase",
+    "name": "StartupBase",
+    "url": "https://startupbase.io",
+    "submitUrl": "",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Community launch feed."
+  },
+  {
+    "id": "tenwords",
+    "name": "10words",
+    "url": "https://10words.io",
+    "submitUrl": "",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Describe the product in ten words; newsletter-driven."
+  },
+  {
+    "id": "startupsfyi",
+    "name": "Startups.fyi",
+    "url": "https://www.startups.fyi",
+    "submitUrl": "",
+    "signup": "none",
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Curated newsletter + directory; submission via external form."
+  },
+  {
+    "id": "crunchbase",
+    "name": "Crunchbase",
+    "url": "https://www.crunchbase.com",
+    "submitUrl": "",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Company profile - valuable for SEO/credibility rather than launch traffic."
+  },
+  {
+    "id": "g2",
+    "name": "G2",
+    "url": "https://www.g2.com",
+    "submitUrl": "",
+    "signup": "email",
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Review platform; vendor listing needs a work email and manual vendor verification - expect a human step."
+  },
+  {
+    "id": "capterra",
+    "name": "Capterra",
+    "url": "https://www.capterra.com",
+    "submitUrl": "",
+    "signup": "email",
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Gartner-owned software directory; vendor signup with manual review."
+  },
+  {
+    "id": "pitchwall",
+    "name": "PitchWall",
+    "url": "https://pitchwall.co",
+    "submitUrl": "",
+    "signup": "oauth",
+    "oauthProviders": [
+      "google",
+      "microsoft",
+      "discord"
+    ],
+    "testStatus": null,
+    "notes": "Startup community feed. Login is Google/Microsoft/Discord only (no email signup). Formerly betapage.co (now redirects here)."
+  },
+  {
+    "id": "directorylaunchhub",
+    "name": "Directory Launch Hub",
+    "url": "https://directorylaunchhub.com",
+    "submitUrl": "https://directorylaunchhub.com/submit-product",
+    "signup": "none",
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Simple submit form; the original form-filling test target."
+  },
+  {
+    "id": "tinystartups",
+    "name": "Tiny Startups",
+    "url": "https://tinystartups.com",
+    "submitUrl": "",
+    "signup": "mixed",
+    "oauthProviders": [
+      "google"
+    ],
+    "testStatus": "needs_fix",
+    "notes": "Google login opens a popup (it shows up in list_tabs - switch to it); email/password signup has hCaptcha (the user solves it). The old actor never completed a submission here."
+  },
+  {
+    "id": "toolsso",
+    "name": "tools.so",
+    "url": "https://tools.so",
+    "submitUrl": "",
+    "signup": "none",
+    "oauthProviders": [],
+    "testStatus": "works",
+    "notes": "Submission is a Tally form, no account. Success = the page says 'recorded' - don't misread that as a failure."
+  },
+  {
+    "id": "sideprojectors",
+    "name": "SideProjectors",
+    "url": "https://www.sideprojectors.com",
+    "submitUrl": "",
+    "signup": "email",
+    "oauthProviders": [],
+    "testStatus": "works",
+    "notes": "Email/password signup with a verification link. Long form; the 'market' tag picker can trap you in a loop - pick 1-2 tags and move on; skip the optional analytics/selling sections."
+  },
+  {
+    "id": "indieproducts",
+    "name": "Indie Products",
+    "url": "https://indieproducts.io",
+    "submitUrl": "",
+    "signup": "oauth",
+    "oauthProviders": [
+      "google"
+    ],
+    "testStatus": "needs_fix",
+    "notes": "Google sign-in only. One short modal form; the product-type dropdown is a custom widget - click to open, read_page, click the option."
+  },
+  {
+    "id": "startupbuffer",
+    "name": "Startup Buffer",
+    "url": "https://startupbuffer.com",
+    "submitUrl": "",
+    "signup": "none",
+    "oauthProviders": [],
+    "testStatus": "works",
+    "notes": "No account; asks for a contact email + one screenshot + text fields. May show a Cloudflare challenge - the user solves it."
+  },
+  {
+    "id": "startupranking",
+    "name": "StartupRanking",
+    "url": "https://www.startupranking.com",
+    "submitUrl": "",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Startup ranking directory."
+  },
+  {
+    "id": "startupinspire",
+    "name": "StartupInspire",
+    "url": "https://startupinspire.com",
+    "submitUrl": "",
+    "signup": null,
+    "oauthProviders": [],
+    "testStatus": null,
+    "notes": "Startup showcase directory."
+  }
+]
