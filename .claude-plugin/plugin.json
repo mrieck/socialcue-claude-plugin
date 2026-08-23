@@ -1,0 +1,18 @@
+{
+  "name": "socialcue",
+  "description": "Social Cue - find social-media conversations worth joining for your brands, on the Claude subscription you already have. Runs /socialdiscovery against your own logged-in local browser, scores conversations with a shared relevance brain, and writes ranked opportunities + drafted replies to a local store you review. On Pro, approve a reply and Claude can click submit for you; scheduling original posts through your own Postiz account is opt-in.",
+  "version": "0.20.1",
+  "author": {
+    "name": "Social Cue"
+  },
+  "homepage": "https://trysocialcue.com",
+  "license": "PolyForm-Shield-1.0.0",
+  "keywords": [
+    "social",
+    "discovery",
+    "reddit",
+    "conversations",
+    "marketing",
+    "browser"
+  ]
+}
