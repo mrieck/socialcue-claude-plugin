@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "socialcue-browser": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/mcp/browser-server/server.js"]
+    }
+  }
+}
