@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face {
+    font-family: 'Inter';
+    src: url('fonts/inter-500.woff2') format('woff2');
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: 'Inter';
+    src: url('fonts/inter-700.woff2') format('woff2');
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: 'Inter';
+    src: url('fonts/inter-800.woff2') format('woff2');
+    font-weight: 800;
+  }
+  * { margin: 0; padding: 0; }
+  body { width: 1600px; height: 500px; overflow: hidden; }
+  .banner {
+    position: relative;
+    width: 1600px; height: 500px;
+    background:
+      radial-gradient(700px 460px at 96% -15%, #ffe3c2 0%, rgba(255,227,194,0) 72%),
+      radial-gradient(620px 420px at 6% 112%, #ffe9d6 0%, rgba(255,233,214,0) 70%),
+      radial-gradient(540px 400px at 74% 118%, #fbe3cc 0%, rgba(251,227,204,0) 68%),
+      linear-gradient(135deg, #fdf9f4 0%, #faf3ea 55%, #f9efe3 100%);
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  }
+  svg.art { position: absolute; inset: 0; }
+  .word {
+    position: absolute; left: 600px; top: 138px;
+    font-size: 116px; font-weight: 800; letter-spacing: -3px;
+    color: #1d222b;
+  }
+  .word .accent { color: #e05d1a; }
+  .tag {
+    position: absolute; left: 606px; top: 296px;
+    font-size: 39px; font-weight: 500;
+    color: #8a7a68;
+  }
+  .rule {
+    position: absolute; left: 608px; top: 368px;
+    width: 132px; height: 7px; border-radius: 4px;
+    background: linear-gradient(90deg, #f2870d, #e05d1a);
+  }
+</style>
+</head>
+<body>
+<div class="banner">
+
+<svg class="art" width="1600" height="500" viewBox="0 0 1600 500">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2870d"/>
+      <stop offset="1" stop-color="#c2440a"/>
+    </linearGradient>
+    <linearGradient id="chip" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2870d"/>
+      <stop offset="1" stop-color="#e05d1a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ===== faint oversized signal arcs, top right ===== -->
+  <g fill="none" stroke="#e8b98a" stroke-linecap="round" opacity="0.5">
+    <path d="M1452 60 A96 96 0 0 1 1452 192" stroke-width="10"/>
+    <path d="M1492 28 A150 150 0 0 1 1492 224" stroke-width="10"/>
+    <circle cx="1408" cy="126" r="17" fill="#e8b98a" stroke="none"/>
+  </g>
+
+  <!-- ===== confetti: dots + tiny bubbles in warm pastels ===== -->
+  <g>
+    <circle cx="700" cy="74" r="7" fill="#f6c188"/>
+    <rect x="905" y="96" width="13" height="13" rx="4" fill="#f0a26b" transform="rotate(18 911 102)" opacity="0.8"/>
+    <circle cx="1120" cy="62" r="6" fill="#e5cdb2"/>
+    <rect x="1252" y="150" width="12" height="12" rx="4" fill="#f6c188" transform="rotate(-24 1258 156)"/>
+    <circle cx="1332" cy="60" r="8" fill="#f0a26b" opacity="0.7"/>
+    <circle cx="1548" cy="300" r="7" fill="#f6c188"/>
+    <rect x="1460" y="368" width="13" height="13" rx="4" fill="#e5cdb2" transform="rotate(30 1466 374)"/>
+    <circle cx="1312" cy="408" r="8" fill="#f0a26b" opacity="0.75"/>
+    <rect x="1130" y="336" width="12" height="12" rx="4" fill="#f6c188" transform="rotate(-15 1136 342)"/>
+    <circle cx="962" cy="398" r="6" fill="#e5cdb2"/>
+    <circle cx="612" cy="90" r="5" fill="#e05d1a" opacity="0.55"/>
+    <rect x="540" y="380" width="12" height="12" rx="4" fill="#f6c188" transform="rotate(12 546 386)"/>
+    <circle cx="80" cy="80" r="7" fill="#f0a26b" opacity="0.7"/>
+    <rect x="152" y="48" width="13" height="13" rx="4" fill="#f6c188" transform="rotate(-20 158 54)"/>
+    <circle cx="256" cy="92" r="5" fill="#e5cdb2"/>
+    <circle cx="478" cy="58" r="6" fill="#f6c188"/>
+  </g>
+
+  <!-- ===== hero art: the Social Cue mark + a scored conversation, left ===== -->
+  <g transform="translate(120,96)">
+    <!-- soft shadow -->
+    <ellipse cx="190" cy="322" rx="215" ry="26" fill="#dcae83" opacity="0.35"/>
+
+    <!-- the mark: orange tile + white bubble + cue (icon.svg scaled 2.2x) -->
+    <g transform="rotate(-4 140 140)">
+      <g transform="scale(2.2)">
+        <rect width="128" height="128" rx="28" fill="url(#tile)"/>
+        <path fill="#ffffff" d="M40 26 h48 a18 18 0 0 1 18 18 v26 a18 18 0 0 1 -18 18 H58 l-16 16 v-16 h-2 a18 18 0 0 1 -18 -18 V44 a18 18 0 0 1 18 -18 Z"/>
+        <circle cx="48" cy="57" r="8" fill="#c94f10"/>
+        <path d="M59 46 A16 16 0 0 1 59 68" fill="none" stroke="#c94f10" stroke-width="8" stroke-linecap="round"/>
+        <path d="M67 39 A27 27 0 0 1 67 75" fill="none" stroke="#c94f10" stroke-width="8" stroke-linecap="round"/>
+      </g>
+    </g>
+
+    <!-- a found conversation: white card overlapping the tile, score chip -->
+    <g transform="translate(196,148) rotate(3)">
+      <rect x="0" y="0" width="252" height="150" rx="20" fill="#fffdfa" stroke="#1d222b" stroke-width="6"/>
+      <!-- thread lines -->
+      <rect x="26" y="28" width="132" height="14" rx="7" fill="#e5cdb2"/>
+      <rect x="26" y="58" width="180" height="14" rx="7" fill="#efe2d0"/>
+      <rect x="26" y="88" width="150" height="14" rx="7" fill="#efe2d0"/>
+      <!-- drafted reply bubble -->
+      <g transform="translate(26,112)">
+        <rect x="0" y="0" width="118" height="26" rx="13" fill="#fbd9bd"/>
+        <rect x="14" y="8" width="66" height="9" rx="4.5" fill="#c94f10"/>
+      </g>
+      <!-- score chip pinned to the corner -->
+      <g transform="translate(186,-24) rotate(6)">
+        <rect x="0" y="0" width="96" height="52" rx="16" fill="url(#chip)" stroke="#fffdfa" stroke-width="5"/>
+        <text x="48" y="36" text-anchor="middle" font-family="Inter" font-weight="800" font-size="28" fill="#fffdfa">9/10</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ===== bottom bar: a row of little conversation bubbles ===== -->
+  <g>
+    <rect x="0" y="452" width="1600" height="48" fill="#1d222b"/>
+  </g>
+</svg>
+
+<div class="word">Social&nbsp;<span class="accent">Cue</span></div>
+<div class="tag">Find the conversations worth joining.</div>
+<div class="rule"></div>
+
+</div>
+</body>
+</html>

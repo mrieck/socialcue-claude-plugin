@@ -1,0 +1,6 @@
+node_modules/
+# Local runtime data (per-project, never committed)
+.socialdiscovery*
+# Logs / scratch
+*.log
+.DS_Store
