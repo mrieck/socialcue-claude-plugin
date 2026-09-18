@@ -1,0 +1,14 @@
+{
+  "name": "socialcue",
+  "owner": { "name": "Social Cue" },
+  "metadata": {
+    "description": "Social Cue - social discovery plugin for Claude Code, on the Claude subscription you already have."
+  },
+  "plugins": [
+    {
+      "name": "socialcue",
+      "source": "./",
+      "description": "Find and score social-media conversations worth joining for your brands by driving your own logged-in local browser - powered by the Claude subscription you already have."
+    }
+  ]
+}
