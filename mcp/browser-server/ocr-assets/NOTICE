@@ -1,0 +1,3 @@
+eng.traineddata is the English "fast" model from tesseract-ocr/tessdata_fast
+(https://github.com/tesseract-ocr/tessdata_fast), licensed Apache-2.0.
+Refresh it with: node scripts/fetch-ocr-assets.mjs
