@@ -1,0 +1,14 @@
+{
+  "name": "socialcue",
+  "owner": { "name": "Social Cue" },
+  "metadata": {
+    "description": "Social Cue - let Claude do your social media marketing, on the Claude subscription you already have."
+  },
+  "plugins": [
+    {
+      "name": "socialcue",
+      "source": "./",
+      "description": "Let Claude do your social media marketing. Finds conversations worth joining on Reddit, HN, X and Threads, drafts replies in your voice, schedules posts and video, launches your product on directories (Pro), tracks what worked. Runs in your own browser on the Claude subscription you already have."
+    }
+  ]
+}

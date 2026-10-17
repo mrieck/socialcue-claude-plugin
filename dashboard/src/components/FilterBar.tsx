@@ -1,0 +1,74 @@
+import type { Brand, Filters, QueueSort } from '../types';
+import { ConfirmButton } from './ConfirmButton';
+
+interface Props {
+  filters: Filters;
+  brands: Brand[];
+  platforms: string[];
+  onChange: (f: Filters) => void;
+  /** Opportunities view only: bulk-skip the whole queue (confirmed in a modal). */
+  clearAll?: { question: string; disabled?: boolean; onConfirm: () => void | Promise<void> };
+  /** Opportunities view only: show the Sort control (newest / score by run). */
+  sortable?: boolean;
+}
+
+// There is deliberately no status filter: the Opportunities view shows every
+// reply that's still in play (all statuses except skipped/posted) so nothing
+// falls into a gap between tabs, and Submitted is fixed to posted.
+export function FilterBar({ filters, brands, platforms, onChange, clearAll, sortable }: Props) {
+  const set = (patch: Partial<Filters>) => onChange({ ...filters, ...patch });
+  return (
+    <div className="filter-bar">
+      {sortable && (
+        <label>
+          Sort
+          <select
+            value={filters.sort}
+            onChange={e => set({ sort: e.target.value as QueueSort })}
+            title="Score sorts inside each run only — a newer run always sits above an older one"
+          >
+            <option value="">newest</option>
+            <option value="score">score, by run</option>
+          </select>
+        </label>
+      )}
+      <label>
+        Platform
+        <select value={filters.platform} onChange={e => set({ platform: e.target.value })}>
+          <option value="">all</option>
+          {platforms.map(p => (
+            <option key={p} value={p}>{p}</option>
+          ))}
+        </select>
+      </label>
+      <label>
+        Brand
+        <select value={filters.brand} onChange={e => set({ brand: e.target.value })}>
+          <option value="">all</option>
+          {brands.map(b => (
+            <option key={b.id} value={b.id}>{b.name}</option>
+          ))}
+        </select>
+      </label>
+      <label>
+        Source
+        <select value={filters.source} onChange={e => set({ source: e.target.value })}>
+          <option value="">both</option>
+          <option value="plugin">plugin</option>
+          <option value="extension">extension</option>
+        </select>
+      </label>
+      {clearAll && (
+        <span className="clear-all">
+          <ConfirmButton
+            label="Clear all"
+            question={clearAll.question}
+            confirmLabel="Skip them"
+            disabled={clearAll.disabled}
+            onConfirm={clearAll.onConfirm}
+          />
+        </span>
+      )}
+    </div>
+  );
+}
